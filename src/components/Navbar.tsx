@@ -1,9 +1,9 @@
 import { useAuth } from '../contexts/AuthContext';
-import { Flower2, LogOut, Upload, History } from 'lucide-react';
+import { Flower2, LogOut, Upload, History, Beaker } from 'lucide-react';
 
 interface NavbarProps {
-  currentView: 'upload' | 'history';
-  onViewChange: (view: 'upload' | 'history') => void;
+  currentView: 'upload' | 'history' | 'training';
+  onViewChange: (view: 'upload' | 'history' | 'training') => void;
 }
 
 export function Navbar({ currentView, onViewChange }: NavbarProps) {
@@ -47,6 +47,17 @@ export function Navbar({ currentView, onViewChange }: NavbarProps) {
                 <History className="w-4 h-4" />
                 <span className="font-medium">History</span>
               </button>
+              <button
+                onClick={() => onViewChange('training')}
+                className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all ${
+                  currentView === 'training'
+                    ? 'bg-white text-emerald-600 shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                <Beaker className="w-4 h-4" />
+                <span className="font-medium">Training</span>
+              </button>
             </div>
 
             <div className="flex items-center gap-3">
@@ -71,25 +82,36 @@ export function Navbar({ currentView, onViewChange }: NavbarProps) {
         <div className="sm:hidden flex gap-2 pb-3">
           <button
             onClick={() => onViewChange('upload')}
-            className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition-all ${
+            className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg transition-all ${
               currentView === 'upload'
                 ? 'bg-emerald-600 text-white'
                 : 'bg-gray-100 text-gray-600'
             }`}
           >
             <Upload className="w-4 h-4" />
-            <span className="font-medium">Upload</span>
+            <span className="font-medium text-sm">Upload</span>
           </button>
           <button
             onClick={() => onViewChange('history')}
-            className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition-all ${
+            className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg transition-all ${
               currentView === 'history'
                 ? 'bg-emerald-600 text-white'
                 : 'bg-gray-100 text-gray-600'
             }`}
           >
             <History className="w-4 h-4" />
-            <span className="font-medium">History</span>
+            <span className="font-medium text-sm">History</span>
+          </button>
+          <button
+            onClick={() => onViewChange('training')}
+            className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg transition-all ${
+              currentView === 'training'
+                ? 'bg-emerald-600 text-white'
+                : 'bg-gray-100 text-gray-600'
+            }`}
+          >
+            <Beaker className="w-4 h-4" />
+            <span className="font-medium text-sm">Training</span>
           </button>
         </div>
       </div>

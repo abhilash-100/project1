@@ -1,0 +1,10 @@
+{
+  "dataset_urls": [
+    "hf://datasets/huggan/flowers-102-categories/data/train-00000-of-00001.parquet"
+  ],
+  "batch_size": 32,
+  "learning_rate": 0.0001,
+  "num_epochs": 10,
+  "use_pretrained": true,
+  "model_name": "flower_model.pth"
+}

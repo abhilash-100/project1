@@ -4,10 +4,11 @@ import { AuthForm } from './components/AuthForm';
 import { Navbar } from './components/Navbar';
 import { UploadView } from './components/UploadView';
 import { HistoryView } from './components/HistoryView';
+import { TrainingView } from './components/TrainingView';
 
 function MainApp() {
   const { user, loading } = useAuth();
-  const [currentView, setCurrentView] = useState<'upload' | 'history'>('upload');
+  const [currentView, setCurrentView] = useState<'upload' | 'history' | 'training'>('upload');
 
   if (loading) {
     return (
@@ -28,7 +29,9 @@ function MainApp() {
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
       <Navbar currentView={currentView} onViewChange={setCurrentView} />
       <main className="py-8 px-4 sm:px-6 lg:px-8">
-        {currentView === 'upload' ? <UploadView /> : <HistoryView />}
+        {currentView === 'upload' && <UploadView />}
+        {currentView === 'history' && <HistoryView />}
+        {currentView === 'training' && <TrainingView />}
       </main>
     </div>
   );
